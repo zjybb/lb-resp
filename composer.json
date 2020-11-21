@@ -1,0 +1,24 @@
+{
+    "name": "zjybb/lb-resp",
+    "description": "laravel response",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "zjybb",
+            "email": "xz@zjybb.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Zjybb\\Response\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Zjybb\\Response\\ServiceProvider"
+            ]
+        }
+    }
+}
