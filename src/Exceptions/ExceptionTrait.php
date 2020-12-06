@@ -73,4 +73,17 @@ trait ExceptionTrait
             return $e instanceof $type;
         }));
     }
+
+    protected function convertExceptionToArray(Throwable $e): array
+    {
+        return config('app.debug') ? [
+            'message' => $e->getMessage() ?? '',
+            'exception' => get_class($e),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+            'trace' => collect($e->getTrace())->map(function ($trace) {
+                return Arr::except($trace, ['args']);
+            })->all(),
+        ] : [];
+    }
 }
