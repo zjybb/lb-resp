@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static responseJson(array $data, $errCode = BaseCode::SUCCESS, $httpCode = BaseCode::HTTP_OK, $msg = '', array $headers = [], $option = 0)
  * @method static msg($msg, $data = [])
  * @method static success(string $msg = '')
- * @method static resource(array $data)
+ * @method static resource($data)
  * @method static error(int $error, string $msg = '', array $data = [])
  * @method static unauthorized()
  * @method static noPermission()

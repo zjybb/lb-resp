@@ -8,9 +8,7 @@ class ServiceProvider extends IlluminateServiceProvider
 {
     public function register()
     {
-        $this->app->singleton('resp', function () {
-            return new ApiResponse();
-        });
+        $this->app->singleton('resp', ApiResponse::class);
     }
 
     public function boot(){

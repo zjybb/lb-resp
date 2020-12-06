@@ -61,7 +61,6 @@ trait ExceptionTrait
     public function setValidationDefault()
     {
         $this->renderable(function (ValidationException $exception, $request) {
-            log_debug('', $exception->errors(), 'verify');
             return Resp::error(BaseCode::VALIDATION_FAIL, '', $exception->errors());
         });
     }
