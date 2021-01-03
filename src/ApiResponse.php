@@ -57,7 +57,7 @@ class ApiResponse
 
     public function resource($data)
     {
-        if ($data instanceof AbstractPaginator) {
+        if ($data instanceof ResourceCollection || $data instanceof AbstractPaginator) {
             $data = $data instanceof ResourceCollection ? $data : new ResourceCollection($data);
             return $this->formatPaginatedResourceResponse($data);
         }
@@ -65,7 +65,7 @@ class ApiResponse
         if (!$data instanceof JsonResource) {
             return $this->responseJson($data);
         }
-        
+
         return tap(
             $this->responseJson($this->parseDataFrom($data)),
             function ($response) use ($data) {
