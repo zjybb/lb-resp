@@ -9,27 +9,27 @@ use Illuminate\Support\Arr;
 
 class ApiResponse
 {
-    public function msg(string $msg, array $data = []): \Illuminate\Http\JsonResponse
+    public function msg(string $msg, array $data = [])
     {
         return $this->responseJson($data, BaseCode::MSG_ERROR, BaseCode::HTTP_OK, $msg);
     }
 
-    public function success(string $msg = '', array $data = []): \Illuminate\Http\JsonResponse
+    public function success(string $msg = '', array $data = [])
     {
         return $this->responseJson($data, BaseCode::SUCCESS, BaseCode::HTTP_OK, $msg);
     }
 
-    public function error(int $error, string $msg = '', array $data = []): \Illuminate\Http\JsonResponse
+    public function error(int $error, string $msg = '', array $data = [])
     {
         return $this->responseJson($data, $error, BaseCode::HTTP_OK, $msg);
     }
 
-    public function unauthorized(): \Illuminate\Http\JsonResponse
+    public function unauthorized()
     {
         return $this->responseJson([], BaseCode::UNAUTHORIZED, BaseCode::HTTP_UNAUTHORIZED);
     }
 
-    public function noPermission(): \Illuminate\Http\JsonResponse
+    public function noPermission()
     {
         return $this->responseJson([], BaseCode::PERMISSION_DENIED);
     }
@@ -75,7 +75,7 @@ class ApiResponse
         );
     }
 
-    protected function formatPaginatedResourceResponse(JsonResource $resource): \Illuminate\Support\HigherOrderTapProxy
+    protected function formatPaginatedResourceResponse(JsonResource $resource)
     {
         $paginated = $resource->resource->toArray();
 
