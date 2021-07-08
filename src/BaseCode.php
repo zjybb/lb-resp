@@ -35,6 +35,8 @@ class BaseCode
 
     const DISABLED_ACCOUNT = -7;
 
+    const NOT_ACTIVE = -8;
+
 
     //---- 后台相关 100 起 ----
 
