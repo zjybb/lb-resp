@@ -16,7 +16,7 @@ return [
 
     BaseCode::MSG_ERROR => '',
 
-    BaseCode::INVALID_USER_OR_PASS => '无效用户或密码',
+    BaseCode::INVALID_USER_OR_PASS => '用户名或密码不正确',
 
     BaseCode::DISABLED_ACCOUNT => '账号已被停用',
 
