@@ -11,27 +11,30 @@ class ApiResponse
 {
     public function msg(string $msg, array $data = [])
     {
+        blank($data) && $data = new \ArrayObject();
         return $this->responseJson($data, BaseCode::MSG_ERROR, BaseCode::HTTP_OK, $msg);
     }
 
-    public function success(string $msg = '', array $data = [])
+    public function success(string $msg = '', $data = [])
     {
+        blank($data) && $data = new \ArrayObject();
         return $this->responseJson($data, BaseCode::SUCCESS, BaseCode::HTTP_OK, $msg);
     }
 
-    public function error(int $error, string $msg = '', array $data = [])
+    public function error(int $error, string $msg = '', $data = [])
     {
+        blank($data) && $data = new \ArrayObject();
         return $this->responseJson($data, $error, BaseCode::HTTP_OK, $msg);
     }
 
     public function unauthorized()
     {
-        return $this->responseJson([], BaseCode::UNAUTHORIZED, BaseCode::HTTP_UNAUTHORIZED);
+        return $this->responseJson(new \ArrayObject(), BaseCode::UNAUTHORIZED, BaseCode::HTTP_UNAUTHORIZED);
     }
 
     public function noPermission()
     {
-        return $this->responseJson([], BaseCode::PERMISSION_DENIED);
+        return $this->responseJson(new \ArrayObject(), BaseCode::PERMISSION_DENIED);
     }
 
     public function responseJson(
@@ -51,7 +54,7 @@ class ApiResponse
             'traceId' => request()->server->get('X-REQUEST-ID', ''),
             'code' => $errCode,
             'errMsg' => blank($msg) ? trans('lb-resp::code.' . $errCode) : $msg,
-            'data' => $data ?: (object)$data
+            'data' => $data
         ];
     }
 
